@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   load(){
     this.id = '';
     this.api.get("image").subscribe((result:any)=>{
-      console.log(result);
+      // console.log(result);
       if(result.status == "success")
       this.datas = result.data
       
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     // console.log(id);
     this.id = id;
     this.api.get("image/"+ id).subscribe((result:any)=>{
-      console.log(result.data);
+      // console.log(result.data);
       this.form.patchValue({
         name : result.data.name,
         image : result.data.imagepath
