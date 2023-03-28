@@ -4,11 +4,11 @@ let Schema = mongoose.Schema;
 let schema = new Schema(
     {
         name : { type : String, required : true},
-        image : { type : String, required : true},
+        imagepath : { type : String, required : true},
    
     }
 )
 
-let Business = mongoose.model("businesses", schema);
+let Image = mongoose.model("images", schema);
 
-module.exports = Business;
+module.exports = Image;

@@ -8,6 +8,7 @@ let app = express();
 app.use(bodyparser.json({limit : '50mb'})) ;
 app.use(bodyparser.urlencoded({limit:'50mb', extended: true}))
 app.use(express.json());
+app.use(express.static("assets"));
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -20,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/igapmatrimony");
+mongoose.connect("mongodb://127.0.0.1:27017/imageUpload");
 let db = mongoose.connection;
 
 db.on("error", error=> console.log(error));

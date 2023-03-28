@@ -13,7 +13,7 @@ router.post("/", (req,res)=>{
         let filename = (Math.random() + 1).toString(36).substring(7);
         logo = logo.split(",").pop();
         fs.writeFileSync("assets/logo/"+ filename +".png", logo, 'base64')
-        object.image = "logo/" + filename + ".png";
+        object.imagepath = "logo/" + filename + ".png";
     }
     
     object.save().then(result=>{
@@ -47,13 +47,14 @@ router.put("/:id", (req,res)=>{
      let logo = body.image;
     // console.log(logo.includes("png"));
     if(logo.includes("png") == true){
-        object.image = body.image;
+        object.imagepath = body.image;
+        
     }
     else if(logo != ""){
         let filename = (Math.random() + 1).toString(36).substring(7);
         logo = logo.split(",").pop();
         fs.writeFileSync("assets/logo/"+ filename +".png", logo, 'base64')
-        object.image = "logo/" + filename + ".png";
+        object.imagepath = "logo/" + filename + ".png";
     }
 
  
@@ -68,12 +69,7 @@ router.put("/:id", (req,res)=>{
 
 router.get("/", (req,res)=>{
     Image.find().sort({name:1}).then(result=>{
-        if(result.length > 0){
             res.end(JSON.stringify({status : "success", data : result}));
-        }
-        else{
-        res.end(JSON.stringify({status : "failed", data : "Record not found"}));        
-        }
     }).catch(err=>{
         res.end(JSON.stringify({status : "failed", data : err}));        
     })

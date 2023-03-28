@@ -36,7 +36,7 @@
       <tbody *ngIf="datas">
         <tr *ngFor="let data of datas ">
           <td>{{ data.name }}</td>
-          <td><img src="{{ api.baseurl +  data.logopath }}" width="100px"> </td>
+          <td><img src="{{ api.baseurl +  data.imagepath }}" width="100px"> </td>
           <td><button class="btn btn-outline-primary" (click)="edit(data._id)">Edit</button> </td>
           <td><button class="btn btn-outline-danger" (click)="delete(data._id)">Delete</button> </td>
         </tr>
